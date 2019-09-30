@@ -1,16 +1,16 @@
 // test cases are described in fixtures.js
 describe('stringifyJSON', function(){
-  it('should match the result of calling JSON.stringify', function(){
+  it('내장 `JSON.stringify` 함수를 실행했을 때와 같은 결과를 리턴해야 합니다.', function(){
 
     stringifiableObjects.forEach(function(test){
-      var expected = JSON.stringify(test);
-      var result = stringifyJSON(test);
+      const expected = JSON.stringify(test);
+      const result = stringifyJSON(test);
       expect(result).to.equal(expected);
     });
 
     unstringifiableValues.forEach(function(obj){
-      var expected = JSON.stringify(obj);
-      var result = stringifyJSON(obj);
+      const expected = JSON.stringify(obj);
+      const result = stringifyJSON(obj);
       expect(result).to.equal(expected);
     });
 
