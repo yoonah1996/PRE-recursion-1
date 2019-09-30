@@ -1,4 +1,4 @@
-var htmlStrings = [
+const htmlStrings = [
   '<p class="targetClassName"></p>',
   '<p class="otherClassName targetClassName"></p>',
   '<p><p class="targetClassName"></p></p>',
@@ -10,16 +10,16 @@ var htmlStrings = [
 
 describe('getElementsByClassName', function(){
 
-  it('should match the results of calling the built-in function', function(){
+  it('내장 `getElementsByClassName` 함수를 실행시켰을 때와 같은 결과를 리턴해야 합니다.', function(){
     $('body').addClass('targetClassName');
     htmlStrings.forEach(function(htmlString){
-      var $rootElement = $(htmlString);
+      const $rootElement = $(htmlString);
       $('body').append($rootElement);
 
-      var result = getElementsByClassName('targetClassName');
-      var expectedNodeList = document.getElementsByClassName('targetClassName');
-      var expectedArray = Array.prototype.slice.apply(expectedNodeList);
-      var equality = _.isEqual(result, expectedArray); // why can't we use `===` here?
+      const result = getElementsByClassName('targetClassName');
+      const expectedNodeList = document.getElementsByClassName('targetClassName');
+      const expectedArray = Array.prototype.slice.apply(expectedNodeList);
+      const equality = _.isEqual(result, expectedArray); // why can't we use `===` here?
       expect(equality).to.equal(true);
 
       $rootElement.remove();
