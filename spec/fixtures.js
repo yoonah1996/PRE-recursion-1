@@ -1,5 +1,5 @@
 // 여러분이 구현한 stringifyJSON을 테스트 하는데 사용됩니다.
-const stringifiableObjects = [
+var stringifiableObjects = [
   9,
   null,
   true,
@@ -26,7 +26,7 @@ const stringifiableObjects = [
 // 여러분이 구현한 stringifyJSON을 테스트 하는데 사용됩니다.
 // hint: JSON은 function과 undefined를 stringfy해서는 안됩니다.
 // 따라서 여러분들은 아래의 key, value 쌍들을 stringfy하지 않도록 해야합니다.
-const unstringifiableValues = [
+var unstringifiableValues = [
   {
     'functions': function(){},
     'undefined': undefined
@@ -34,7 +34,7 @@ const unstringifiableValues = [
 ];
 
  // used for parseJSON specs
-const parseableStrings = [
+var parseableStrings = [
   // basic stuff
   '[]',
   '{"foo": ""}',
@@ -120,7 +120,7 @@ const parseableStrings = [
 ];
 
 // JSON does not allow you to parse these strings
-const unparseableStrings = [
+var unparseableStrings = [
     '["foo", "bar"',
     '["foo", "bar\\"]'
 ];
