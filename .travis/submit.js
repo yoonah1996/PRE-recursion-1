@@ -68,7 +68,7 @@ exec('npm test | grep -E "[0-9]+\\s(passing|failing)"', (err, stdout1, stderr) =
   req.write(
     JSON.stringify(
       {
-        title: "Recursion",
+        title: "recursion",
         githubUsername: username,
         lambdaKey: LAMBDA_KEY,
         passed,
