@@ -1,17 +1,17 @@
 const { exec } = require("child_process");
 const https = require("https");
 
-exec('npm test | grep -E "[0-9]+\\s(specs)"', (err, stdout1, stderr) => {
+exec('npm test | grep -E "[0-9]+\\s(passing|failing)"', (err, stdout1, stderr) => {
   if (err) {
     console.log(err);
     throw new Error("can not take the test result");
   }
 
   // Get test result from the console and cleasing it for spread sheet
-  let specs = stdout1.match(/([.\d,]+)[ ]+specs/);
-  let matchWithFailing = stdout1.match(/([.\d,]+)[ ]+failures/);
+  let matchWithPassing = stdout1.match(/([.\d,]+)[ ]+passing/);
+  let matchWithFailing = stdout1.match(/([.\d,]+)[ ]+failing/);
+  let passed = matchWithPassing ? Number(matchWithPassing[1]) : 0;
   let failed = matchWithFailing ? Number(matchWithFailing[1]) : 0;
-  let passed = Number(specs[1]) - failed;
 
   console.log('passed, failed', passed, failed);
 
