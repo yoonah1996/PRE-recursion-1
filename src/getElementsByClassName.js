@@ -13,8 +13,31 @@
  *    return document.getElementsByClassName(className);
  *  };
  * 
+ 1. 결과를 담을 빈배열 result 생성
+ 2. html에서 class를 담고 있는 최상위 element인 body부터 class를 찾아내려감 -> document.body에서 시작
+ 3. 현재 element가 인자로 들어온 className을 포함하고 있으면, result배열에 추가
+ 4. element에 자식 element가 있으면, for문을 돌면서 recursion을 돌려주고, recursion을 통해 element가 지정된 className을 가지고 있는지 확인
+ 5. 자식 element가 없을때까지 recursion이 돌아간 후 result 배열을 리턴
  * 하지만 이 과제의 목적은 재귀를 공부하는 것이니, 처음부터 구현해봐야겠지요?
  */
 function getElementsByClassName(className) {
-  // your code here
+  let result = [];  //className을 가지고 모든 html element를 저장할 배열
+  let highelement = document.body;  //html의 최상위 클래스 element
+  //재귀함수
+  let recursion = function(element){
+    //className을 가지고 있으면 result에 push해라
+    if(element.classList.contains(className)){
+      result.push(element);
+    }
+    //element의 자식이 0보다 크면(즉, 있으면) 재귀함수 실행
+    if(element.children.length > 0){
+      for(let i=0; i<element.children.length; i++){
+        recursion(element.children[i]);
+      }
+    }
+  }
+
+  recursion(highelement);
+  return result;
+
 };
